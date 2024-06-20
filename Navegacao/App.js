@@ -27,11 +27,11 @@ export default function App() {
 
     return (
         <NavigationContainer>
-            <PilhaTelas.Navigator initialRouteName='PrimeiraTela'>
+            <PilhaTelas.Navigator initialRouteName='IFC'>
                 <PilhaTelas.Screen
-                    name="PrimeiraTela"
+                    name="IFC"
                     component={PrimeiraTela}
-                    options={{ title: "Tela inicial" }}
+                    options={{ title: "Institudo Federal catarinense" }}
                 />    </PilhaTelas.Navigator>
         </NavigationContainer>);
 }
