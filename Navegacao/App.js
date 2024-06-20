@@ -10,13 +10,13 @@ function PrimeiraTela({ route, navigation }) {
         <View style={styles.container}>
             <Text style={styles.titulo}>IFC Ibirama</Text>
             <Button
-                title='IFC Ibirama'
-                color="green"
+                title='Detalhes IFC'
+                color="#3a6604"
                 onPress={function () { navigation.navigate('Detalhes') }}
             />
             <Button
-                title='Escolher Cusro'
-                color="yellow"
+                title='Escolher Curso'
+                color="#3a6604"
                 onPress={function () { navigation.navigate('TelaEscolherCursos') }}
             />
         </View>
@@ -32,7 +32,7 @@ export default function App() {
                     name="IFC"
                     component={PrimeiraTela}
                     options={{ title: "Institudo Federal catarinense" }}
-                />    </PilhaTelas.Navigator>
+                /></PilhaTelas.Navigator>
         </NavigationContainer>);
 }
 
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     titulo: {
-        marginTop: '10%',
-        fontSize: 20
+        marginTop: '50%',
+        fontSize: 20,
     }
 });
