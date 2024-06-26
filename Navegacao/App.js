@@ -9,12 +9,12 @@ function PrimeiraTela({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>IFC Ibirama</Text>
-            <Button
+            <Button style={styles.botao}
                 title='Detalhes IFC'
                 color="#3a6604"
                 onPress={function () { navigation.navigate('SegundaTela') }}
             />
-            <Button
+            <Button style={styles.botao}
                 title='Escolher Curso'
                 color="#3a6604"
                 onPress={function () { navigation.navigate('TelaEscolherCurso') }}
@@ -28,12 +28,12 @@ function SegundaTela({ navigation }) {
         <View style={styles.container}>
             <Text style={styles.titulo}>O Instituto Federal Catarinense (IFC) foi criado pela Lei Federal nº 11.892, de 29 de dezembro de 2008, e teve origem na integração das escolas agrotécnicas de Concórdia, Rio do Sul e Sombrio e dos colégios agrícolas de Araquari e Camboriú, que eram vinculados à Universidade Federal de Santa Catarina.</Text>
 
-            <Button
+            <Button style={styles.botao}
                 title='Voltar para o inicio'
                 color="red"
                 onPress={function () { navigation.navigate('PrimeiraTela') }}
             />
-            <Button
+            <Button style={styles.botao}
                 title='Voltar'
                 color="red"
                 onPress={function () { navigation.goBack() }}
@@ -46,7 +46,7 @@ function TelaEscolherCurso({ route, navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>Escolher um Curso</Text>
-            <Button
+            <Button style={styles.botao}
                 title='Informática'
                 color="black"
                 onPress={function () {
@@ -56,7 +56,7 @@ function TelaEscolherCurso({ route, navigation }) {
                     })
                 }}
             />
-            <Button
+            <Button style={styles.botao}
                 title='Vestuario'
                 color="black"
                 onPress={function () {
@@ -66,7 +66,7 @@ function TelaEscolherCurso({ route, navigation }) {
                     })
                 }}
             />
-            <Button
+            <Button style={styles.botao}
                 title='Administração'
                 color="black"
                 onPress={function () {
@@ -76,14 +76,14 @@ function TelaEscolherCurso({ route, navigation }) {
                     })
                 }}
             />
-            
-            <Button
+
+            <Button style={styles.botao}
                 title='Voltar'
                 color="red"
                 onPress={function () { navigation.goBack() }}
             />
         </View>
-    
+
     )
 }
 
@@ -93,14 +93,12 @@ function TelaCursos({ route, navigation }) {
         <View style={styles.container}>
             <Text style={styles.titulo}>{route.params.nome}</Text>
             <Text>{route.params.descricao}</Text>
-            <Button
+            <Button style={styles.botao}
                 title='Voltar para o inicio'
                 color="#3a6604"
-                onPress={function () {
-                    navigation.navigate('PrimeiraTela')
-                }}
+                onPress={function () { navigation.navigate('PrimeiraTela') }}
             />
-            <Button
+            <Button style={styles.botao}
                 title='Voltar'
                 color="red"
                 onPress={function () {
@@ -123,7 +121,7 @@ export default function App() {
                 <PilhaTelas.Screen
                     name="SegundaTela"
                     component={SegundaTela}
-                    options={{ title: "Escolha" }}
+                    options={{ title: "Institudo Federal catarinense" }}
                 />
                 <PilhaTelas.Screen
                     name="TelaEscolherCurso"
@@ -150,7 +148,11 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     titulo: {
-        marginTop: '50%',
+        margin: '8%',
         fontSize: 20,
+        textAlign: 'center'
+    },
+    botao:{
+        marginBottom: "50%"
     }
 });
