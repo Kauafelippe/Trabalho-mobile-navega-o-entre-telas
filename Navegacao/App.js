@@ -76,7 +76,14 @@ function TelaEscolherCurso({ route, navigation }) {
                     })
                 }}
             />
+            
+            <Button
+                title='Voltar'
+                color="red"
+                onPress={function () { navigation.goBack() }}
+            />
         </View>
+    
     )
 }
 
