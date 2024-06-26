@@ -1,28 +1,108 @@
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, Text, TextInput, View, Button, Image, Alert, FlatList } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, Alert } from 'react-native';
 
 const PilhaTelas = createNativeStackNavigator()
 
-function PrimeiraTela({ route, navigation }) {
+function PrimeiraTela({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>IFC Ibirama</Text>
             <Button
                 title='Detalhes IFC'
                 color="#3a6604"
-                onPress={function () { navigation.navigate('Detalhes') }}
+                onPress={function () { navigation.navigate('SegundaTela') }}
             />
             <Button
                 title='Escolher Curso'
                 color="#3a6604"
-                onPress={function () { navigation.navigate('TelaEscolherCursos') }}
+                onPress={function () { navigation.navigate('TelaEscolherCurso') }}
             />
         </View>
     )
 }
 
+function SegundaTela({ navigation }) {
+    return (
+        <View style={styles.container}>
+            <Text style={styles.titulo}>O Instituto Federal Catarinense (IFC) foi criado pela Lei Federal nº 11.892, de 29 de dezembro de 2008, e teve origem na integração das escolas agrotécnicas de Concórdia, Rio do Sul e Sombrio e dos colégios agrícolas de Araquari e Camboriú, que eram vinculados à Universidade Federal de Santa Catarina.</Text>
+
+            <Button
+                title='Voltar para o inicio'
+                color="red"
+                onPress={function () { navigation.navigate('PrimeiraTela') }}
+            />
+            <Button
+                title='Voltar'
+                color="red"
+                onPress={function () { navigation.goBack() }}
+            />
+        </View>
+    )
+}
+
+function TelaEscolherCurso({ route, navigation }) {
+    return (
+        <View style={styles.container}>
+            <Text style={styles.titulo}>Escolher um Curso</Text>
+            <Button
+                title='Informática'
+                color="black"
+                onPress={function () {
+                    navigation.navigate('TelaCursos', {
+                        nome: "Informatica",
+                        descricao: "O técnico em Informática Integrado ao Ensino Médio prepara o aluno para atuar de maneira consciente e responsável, com foco em desenvolvimento de programas de computador, seguindo as especificações e paradigmas da lógica e das linguagens de programação."
+                    })
+                }}
+            />
+            <Button
+                title='Vestuario'
+                color="black"
+                onPress={function () {
+                    navigation.navigate('TelaCursos', {
+                        nome: "Vestuario",
+                        descricao: "O curso Técnico em Vestuário Integrado ao Ensino Médio objetiva proporcionar aos discentes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando o domínio dos conhecimentos científicos e tecnológicos, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho, com foco na formação e a qualificação de profissionais com visão técnica para atuarem na área de confecção do vestuário, aptos a gerenciar e operacionalizar as diversas etapas do processo de produção do vestuário, em empresas da área industrial e de prestação de serviços."
+                    })
+                }}
+            />
+            <Button
+                title='Administração'
+                color="black"
+                onPress={function () {
+                    navigation.navigate('TelaCursos', {
+                        nome: "Administração",
+                        descricao: "O Curso Técnico em Administração tem por objetivo proporcionar aos estudantes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando ao domínio dos conhecimentos científicos e tecnológicos da administração, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho. Assim, o profissional Técnico em Administração pode atuar nas instituições públicas, privadas e do terceiro setor que demandem atividades de gestão, trabalhando especialmente no suporte e apoio nos mais diversos setores."
+                    })
+                }}
+            />
+        </View>
+    )
+}
+
+
+function TelaCursos({ route, navigation }) {
+    return (
+        <View style={styles.container}>
+            <Text style={styles.titulo}>{route.params.nome}</Text>
+            <Text>{route.params.descricao}</Text>
+            <Button
+                title='Voltar para o inicio'
+                color="#3a6604"
+                onPress={function () {
+                    navigation.navigate('PrimeiraTela')
+                }}
+            />
+            <Button
+                title='Voltar'
+                color="red"
+                onPress={function () {
+                    navigation.goBack()
+                }}
+            />
+        </View>
+    )
+}
 export default function App() {
 
     return (
@@ -32,8 +112,25 @@ export default function App() {
                     name="IFC"
                     component={PrimeiraTela}
                     options={{ title: "Institudo Federal catarinense" }}
-                /></PilhaTelas.Navigator>
-        </NavigationContainer>);
+                />
+                <PilhaTelas.Screen
+                    name="SegundaTela"
+                    component={SegundaTela}
+                    options={{ title: "Escolha" }}
+                />
+                <PilhaTelas.Screen
+                    name="TelaEscolherCurso"
+                    component={TelaEscolherCurso}
+                    options={{ title: "Escolher Cursos" }}
+                />
+                <PilhaTelas.Screen
+                    name="TelaCursos"
+                    component={TelaCursos}
+                    options={{ title: "Cursos" }}
+                />
+            </PilhaTelas.Navigator>
+        </NavigationContainer>
+    );
 }
 
 
