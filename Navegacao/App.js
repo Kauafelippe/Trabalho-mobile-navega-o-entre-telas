@@ -9,11 +9,13 @@ function PrimeiraTela({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>IFC Ibirama</Text>
-            <Button style={styles.botao}
+            <View style={styles.botao}>
+                <Button style={styles.botao}
                 title='Detalhes IFC'
                 color="#3a6604"
                 onPress={function () { navigation.navigate('SegundaTela') }}
-            />
+            /></View>
+
             <Button style={styles.botao}
                 title='Escolher Curso'
                 color="#3a6604"
@@ -31,7 +33,7 @@ function SegundaTela({ navigation }) {
             <Button style={styles.botao}
                 title='Voltar para o inicio'
                 color="red"
-                onPress={function () { navigation.navigate('PrimeiraTela') }}
+                onPress={function () { navigation.navigate('IFC') }}
             />
             <Button style={styles.botao}
                 title='Voltar'
@@ -96,7 +98,7 @@ function TelaCursos({ route, navigation }) {
             <Button style={styles.botao}
                 title='Voltar para o inicio'
                 color="#3a6604"
-                onPress={function () { navigation.navigate('PrimeiraTela') }}
+                onPress={function () { navigation.navigate('IFC') }}
             />
             <Button style={styles.botao}
                 title='Voltar'
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         textAlign: 'center'
     },
-    botao:{
+    botao: {
         marginBottom: "50%"
     }
 });
