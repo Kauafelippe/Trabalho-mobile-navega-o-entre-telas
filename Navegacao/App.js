@@ -104,7 +104,7 @@ function TelaCursos({ route, navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>{route.params.nome}</Text>
-            <Text>{route.params.descricao}</Text>
+            <Text style={styles.alinhamneto}>{route.params.descricao}</Text>
             <View style={styles.botao}>
                 <Button
                     title='Voltar para o inicio'
@@ -178,5 +178,12 @@ const styles = StyleSheet.create({
         width: "98%",
         height: 300,
         margin: 10
+    },
+    alinhamneto:{
+        flex:1,
+        width:'80%',
+        fontSize:6,
+        textAlign:'justify'
+
     }
 });
