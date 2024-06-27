@@ -30,7 +30,10 @@ function SegundaTela({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>O Instituto Federal Catarinense (IFC) foi criado pela Lei Federal nº 11.892, de 29 de dezembro de 2008, e teve origem na integração das escolas agrotécnicas de Concórdia, Rio do Sul e Sombrio e dos colégios agrícolas de Araquari e Camboriú, que eram vinculados à Universidade Federal de Santa Catarina.</Text>
-
+            <Image
+          style={styles.img}
+          source={require('./assets/images/ifc.png')}
+        />
             <Button style={styles.botao}
                 title='Voltar para o inicio'
                 color="red"
@@ -170,5 +173,10 @@ const styles = StyleSheet.create({
     },
     botao2: {
         margin: "1.5%"
+    },
+    img:{
+        width: "98%",
+        height: 300,
+        margin: 10
     }
 });
