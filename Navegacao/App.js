@@ -29,10 +29,12 @@ function PrimeiraTela({ navigation }) {
 function SegundaTela({ navigation }) {
     return (
         <View style={styles.container}>
-            <Text style={styles.titulo}>O Instituto Federal Catarinense (IFC) foi criado pela Lei Federal nº 11.892, de 29 de dezembro de 2008, e teve origem na integração das escolas agrotécnicas de Concórdia, Rio do Sul e Sombrio e dos colégios agrícolas de Araquari e Camboriú, que eram vinculados à Universidade Federal de Santa Catarina.</Text>
+            <Text style={styles.titulo}>Descrição IFC Campus Ibirama</Text>
+            {/* Descrição do IFC Ibirama  */}
+            <Text style={styles.alinhamento}>O Instituto Federal Catarinense (IFC) - Campus Ibirama oferece uma variedade de cursos técnicos, de graduação e pós-graduação, com destaque para áreas como Administração, Informática, Vestuário e Design de Moda. A instituição valoriza a pesquisa, a extensão e a inovação, promovendo eventos e projetos que visam o desenvolvimento acadêmico e profissional dos alunos. Além disso, o campus proporciona um ambiente de ensino inclusivo e acessível, contribuindo para o crescimento educacional e socioeconômico da região.</Text>
             <Image
                 style={styles.img}
-                source={require('./assets/images/ifc.png')}
+                source={require('./assets/images/ifc-entrada.jpg')}
             />
             <View style={styles.botao}>
                 <Button style={styles.botao}
@@ -102,7 +104,7 @@ function TelaCursos({ route, navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.titulo}>{route.params.nome}</Text>
-            <Text style={styles.alinhamneto}>{route.params.descricao}</Text>
+            <Text style={styles.alinhamento}>{route.params.descricao}</Text>
             <View style={styles.botao}>
                 <Button style={styles.botao}
                     title='Voltar'
@@ -178,7 +180,7 @@ const styles = StyleSheet.create({
         height: 300,
         margin: 10
     },
-    alinhamneto: {
+    alinhamento: {
         flex: 1,
         width: '80%',
         fontSize: 16,
