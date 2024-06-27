@@ -31,19 +31,16 @@ function SegundaTela({ navigation }) {
         <View style={styles.container}>
             <Text style={styles.titulo}>O Instituto Federal Catarinense (IFC) foi criado pela Lei Federal nº 11.892, de 29 de dezembro de 2008, e teve origem na integração das escolas agrotécnicas de Concórdia, Rio do Sul e Sombrio e dos colégios agrícolas de Araquari e Camboriú, que eram vinculados à Universidade Federal de Santa Catarina.</Text>
             <Image
-          style={styles.img}
-          source={require('./assets/images/ifc.png')}
-        />
-            <Button style={styles.botao}
-                title='Voltar para o inicio'
-                color="red"
-                onPress={function () { navigation.navigate('IFC') }}
+                style={styles.img}
+                source={require('./assets/images/ifc.png')}
             />
-            <Button style={styles.botao}
-                title='Voltar'
-                color="red"
-                onPress={function () { navigation.goBack() }}
-            />
+            <View style={styles.botao}>
+                <Button style={styles.botao}
+                    title='Voltar'
+                    color="#3a6604"
+                    onPress={function () { navigation.goBack() }}
+                />
+            </View>
         </View>
     )
 }
@@ -84,6 +81,7 @@ function TelaEscolherCurso({ route, navigation }) {
                         navigation.navigate('TelaCursos', {
                             nome: "Administração",
                             descricao: "O Curso Técnico em Administração tem por objetivo proporcionar aos estudantes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando ao domínio dos conhecimentos científicos e tecnológicos da administração, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho. Assim, o profissional Técnico em Administração pode atuar nas instituições públicas, privadas e do terceiro setor que demandem atividades de gestão, trabalhando especialmente no suporte e apoio nos mais diversos setores."
+                            //matéria, professor e imagem
                         })
                     }}
                 />
@@ -91,7 +89,7 @@ function TelaEscolherCurso({ route, navigation }) {
             <View style={styles.botao}>
                 <Button style={styles.botao}
                     title='Voltar'
-                    color="red"
+                    color="#3a6604"
                     onPress={function () { navigation.goBack() }}
                 />
             </View>
@@ -106,21 +104,22 @@ function TelaCursos({ route, navigation }) {
             <Text style={styles.titulo}>{route.params.nome}</Text>
             <Text style={styles.alinhamneto}>{route.params.descricao}</Text>
             <View style={styles.botao}>
+                <Button style={styles.botao}
+                    title='Voltar'
+                    color="#3a6604"
+                    onPress={function () {
+                        navigation.goBack()
+                    }}
+                />
+            </View>
+            <View style={styles.botao}>
                 <Button
                     title='Voltar para o inicio'
                     color="#3a6604"
                     onPress={function () { navigation.navigate('IFC') }}
                 />
             </View>
-            <View style={styles.botao}>
-                <Button style={styles.botao}
-                    title='Voltar'
-                    color="red"
-                    onPress={function () {
-                        navigation.goBack()
-                    }}
-                />
-            </View>
+            
 
         </View>
     )
@@ -174,16 +173,16 @@ const styles = StyleSheet.create({
     botao2: {
         margin: "1.5%"
     },
-    img:{
+    img: {
         width: "98%",
         height: 300,
         margin: 10
     },
-    alinhamneto:{
-        flex:1,
-        width:'80%',
-        fontSize:6,
-        textAlign:'justify'
+    alinhamneto: {
+        flex: 1,
+        width: '80%',
+        fontSize: 16,
+        textAlign: 'justify'
 
     }
 });
