@@ -71,7 +71,7 @@ function TelaEscolherCurso({ route, navigation }) {
                     onPress={function () {
                         navigation.navigate('TelaCursos', {
                             nome: "Vestuario",
-                        
+                            Image: require('./assets/images/logo_vest.jpg'),
                             descricao: "O curso Técnico em Vestuário Integrado ao Ensino Médio objetiva proporcionar aos discentes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando o domínio dos conhecimentos científicos e tecnológicos, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho, com foco na formação e a qualificação de profissionais com visão técnica para atuarem na área de confecção do vestuário, aptos a gerenciar e operacionalizar as diversas etapas do processo de produção do vestuário, em empresas da área industrial e de prestação de serviços."
                         })
                     }}
@@ -84,6 +84,7 @@ function TelaEscolherCurso({ route, navigation }) {
                     onPress={function () {
                         navigation.navigate('TelaCursos', {
                             nome: "Administração",
+                            Image: require('./assets/images/logo_adm.jpg'),
                             descricao: "O Curso Técnico em Administração tem por objetivo proporcionar aos estudantes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando ao domínio dos conhecimentos científicos e tecnológicos da administração, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho. Assim, o profissional Técnico em Administração pode atuar nas instituições públicas, privadas e do terceiro setor que demandem atividades de gestão, trabalhando especialmente no suporte e apoio nos mais diversos setores.",
                            
                             //matéria, professor e imagem
@@ -196,6 +197,6 @@ const styles = StyleSheet.create({
     },
     Image:{
         width:'98%',
-        height: 300
+        height: 250
     }
 });
