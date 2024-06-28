@@ -2,6 +2,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, View, Button, Image, ScrollView, StatusBar, SafeAreaView } from 'react-native';
+import { Table, Row, Rows } from 'react-native-table-component';
 
 const PilhaTelas = createNativeStackNavigator()
 
@@ -19,8 +20,7 @@ function PrimeiraTela({ navigation }) {
                 <Button
                     title='Escolher Curso'
                     color="#3a6604"
-                    onPress={function () { navigation.navigate('TelaEscolherCurso') }}
-                />
+                    onPress={function () { navigation.navigate('TelaEscolherCurso') }} />
             </View>
         </View>
     )
@@ -34,14 +34,12 @@ function SegundaTela({ navigation }) {
             <Text style={styles.alinhamento}>O Instituto Federal Catarinense (IFC) - Campus Ibirama oferece uma variedade de cursos técnicos, de graduação e pós-graduação, com destaque para áreas como Administração, Informática, Vestuário e Design de Moda. A instituição valoriza a pesquisa, a extensão e a inovação, promovendo eventos e projetos que visam o desenvolvimento acadêmico e profissional dos alunos. Além disso, o campus proporciona um ambiente de ensino inclusivo e acessível, contribuindo para o crescimento educacional e socioeconômico da região.</Text>
             <Image
                 style={styles.img}
-                source={require('./assets/images/ifc-entrada.jpg')}
-            />
+                source={require('./assets/images/ifc-entrada.jpg')} />
             <View style={styles.botao}>
                 <Button style={styles.botao}
                     title='Voltar'
                     color="#3a6604"
-                    onPress={function () { navigation.goBack() }}
-                />
+                    onPress={function () { navigation.goBack() }} />
             </View>
         </View>
     )
@@ -59,10 +57,16 @@ function TelaEscolherCurso({ route, navigation }) {
                         navigation.navigate('TelaCursos', {
                             nome: "Informatica",
                             image: require('./assets/images/logo_info.jpg'),
-                            descricao: "O técnico em Informática Integrado ao Ensino Médio prepara o aluno para atuar de maneira consciente e responsável, com foco em desenvolvimento de programas de computador, seguindo as especificações e paradigmas da lógica e das linguagens de programação."
+                            descricao: "O técnico em Informática Integrado ao Ensino Médio prepara o aluno para atuar de maneira consciente e responsável, com foco em desenvolvimento de programas de computador, seguindo as especificações e paradigmas da lógica e das linguagens de programação.",
+                            // tabelaCabecalho: ['Professor', 'Matéria'],
+                            // tabelaDado: [
+                            //     ['1', '2', '3', '4'],
+                            //     ['a', 'b', 'c', 'd'],
+                            //     ['1', '2', '3', '456\n789'],
+                            //     ['a', 'b', 'c', 'd']
+                            // ]
                         })
-                    }}
-                />
+                    }} />
             </View>
             <View style={styles.botao2}>
                 <Button
@@ -74,8 +78,7 @@ function TelaEscolherCurso({ route, navigation }) {
                             image: require('./assets/images/logo_vest.jpg'),
                             descricao: "O curso Técnico em Vestuário Integrado ao Ensino Médio objetiva proporcionar aos discentes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando o domínio dos conhecimentos científicos e tecnológicos, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho, com foco na formação e a qualificação de profissionais com visão técnica para atuarem na área de confecção do vestuário, aptos a gerenciar e operacionalizar as diversas etapas do processo de produção do vestuário, em empresas da área industrial e de prestação de serviços."
                         })
-                    }}
-                />
+                    }} />
             </View>
             <View style={styles.botao2}>
                 <Button
@@ -89,15 +92,13 @@ function TelaEscolherCurso({ route, navigation }) {
 
                             //matéria, professor e imagem
                         })
-                    }}
-                />
+                    }} />
             </View>
             <View style={styles.botao}>
                 <Button style={styles.botao}
                     title='Voltar'
                     color="#3a6604"
-                    onPress={function () { navigation.goBack() }}
-                />
+                    onPress={function () { navigation.goBack() }} />
             </View>
         </View>
     )
@@ -105,61 +106,59 @@ function TelaEscolherCurso({ route, navigation }) {
 
 function TelaCursos({ route, navigation }) {
     return (
-
         <View style={styles.container}>
             <SafeAreaView style={styles.container2}>
                 <ScrollView style={styles.scrollView}>
                     <Text style={styles.titulo}>{route.params.nome}</Text>
                     <Image style={styles.imagem} source={route.params.image} />
                     <Text style={styles.alinhamento}>{route.params.descricao}</Text>
+                    {/* <Table style={styles.tabela}>
+                        <Row data={styles.tabelaCabecalho} style={styles.head} textStyle={styles.text} />
+                        <Rows data={styles.tabelaDado} textStyle={styles.text} />
+                    </Table> */}
                     <View style={styles.botao}>
                         <Button style={styles.botao3}
                             title='Voltar'
                             color="#3a6604"
                             onPress={function () {
                                 navigation.goBack()
-                            }}
-                        />
+                            }} />
                     </View>
                     <View style={styles.botao3}>
                         <Button
                             title='Voltar para o inicio'
                             color="#3a6604"
-                            onPress={function () { navigation.navigate('IFC') }}
-                        />
+                            onPress={function () { navigation.navigate('IFC') }} />
                     </View>
                 </ScrollView>
             </SafeAreaView>
         </View>
     )
 }
-export default function App() {
 
+export default function App() {
     return (
         <NavigationContainer>
             <PilhaTelas.Navigator initialRouteName='IFC'>
                 <PilhaTelas.Screen
                     name="IFC"
                     component={PrimeiraTela}
-                    options={{ title: "Institudo Federal catarinense" }}
-                />
+                    options={{ title: "Institudo Federal catarinense" }} />
                 <PilhaTelas.Screen
                     name="SegundaTela"
                     component={SegundaTela}
-                    options={{ title: "Institudo Federal catarinense" }}
-                />
+                    options={{ title: "Institudo Federal catarinense" }} />
                 <PilhaTelas.Screen
                     name="TelaEscolherCurso"
                     component={TelaEscolherCurso}
-                    options={{ title: "Escolher Cursos" }}
-                />
+                    options={{ title: "Escolher Cursos" }} />
                 <PilhaTelas.Screen
                     name="TelaCursos"
                     component={TelaCursos}
-                    options={{ title: "Cursos" }}
-                />
+                    options={{ title: "Cursos" }} />
             </PilhaTelas.Navigator>
         </NavigationContainer>
+
     );
 }
 
@@ -208,5 +207,12 @@ const styles = StyleSheet.create({
     scrollView: {
         marginHorizontal: 10,
 
-    }
+    }// ,
+    // head: {
+    //     height: 40,
+    //     backgroundColor: '#f1f8ff'
+    // },
+    // text: {
+    //     margin: 6
+    // }
 });
