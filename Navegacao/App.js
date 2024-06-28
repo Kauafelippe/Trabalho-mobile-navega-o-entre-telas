@@ -1,7 +1,7 @@
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, Text, View, Button, Image, Alert } from 'react-native';
+import { StyleSheet, Text, View, Button, Image, ScrollView, StatusBar, SafeAreaView } from 'react-native';
 
 const PilhaTelas = createNativeStackNavigator()
 
@@ -58,7 +58,7 @@ function TelaEscolherCurso({ route, navigation }) {
                     onPress={function () {
                         navigation.navigate('TelaCursos', {
                             nome: "Informatica",
-                            Image: require('./assets/images/logo_info.jpg'),
+                            image: require('./assets/images/logo_info.jpg'),
                             descricao: "O técnico em Informática Integrado ao Ensino Médio prepara o aluno para atuar de maneira consciente e responsável, com foco em desenvolvimento de programas de computador, seguindo as especificações e paradigmas da lógica e das linguagens de programação."
                         })
                     }}
@@ -71,7 +71,7 @@ function TelaEscolherCurso({ route, navigation }) {
                     onPress={function () {
                         navigation.navigate('TelaCursos', {
                             nome: "Vestuario",
-                            Image: require('./assets/images/logo_vest.jpg'),
+                            image: require('./assets/images/logo_vest.jpg'),
                             descricao: "O curso Técnico em Vestuário Integrado ao Ensino Médio objetiva proporcionar aos discentes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando o domínio dos conhecimentos científicos e tecnológicos, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho, com foco na formação e a qualificação de profissionais com visão técnica para atuarem na área de confecção do vestuário, aptos a gerenciar e operacionalizar as diversas etapas do processo de produção do vestuário, em empresas da área industrial e de prestação de serviços."
                         })
                     }}
@@ -84,9 +84,9 @@ function TelaEscolherCurso({ route, navigation }) {
                     onPress={function () {
                         navigation.navigate('TelaCursos', {
                             nome: "Administração",
-                            Image: require('./assets/images/logo_adm.jpg'),
+                            image: require('./assets/images/logo_adm.jpg'),
                             descricao: "O Curso Técnico em Administração tem por objetivo proporcionar aos estudantes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando ao domínio dos conhecimentos científicos e tecnológicos da administração, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho. Assim, o profissional Técnico em Administração pode atuar nas instituições públicas, privadas e do terceiro setor que demandem atividades de gestão, trabalhando especialmente no suporte e apoio nos mais diversos setores.",
-                           
+
                             //matéria, professor e imagem
                         })
                     }}
@@ -100,37 +100,36 @@ function TelaEscolherCurso({ route, navigation }) {
                 />
             </View>
         </View>
-
     )
 }
 
 function TelaCursos({ route, navigation }) {
     return (
-        <View style={styles.container}>
-            <Text style={styles.titulo}>{route.params.nome}</Text>
-            <Image style={styles.Image} source={route.params.Image} />
-            <Text style={styles.alinhamento}>{route.params.descricao}</Text>
-            
-               
-            
-            <View style={styles.botao}>
-                <Button style={styles.botao}
-                    title='Voltar'
-                    color="#3a6604"
-                    onPress={function () {
-                        navigation.goBack()
-                    }}
-                />
-            </View>
-            <View style={styles.botao}>
-                <Button
-                    title='Voltar para o inicio'
-                    color="#3a6604"
-                    onPress={function () { navigation.navigate('IFC') }}
-                />
-            </View>
-            
 
+        <View style={styles.container}>
+            <SafeAreaView style={styles.container2}>
+                <ScrollView style={styles.scrollView}>
+                    <Text style={styles.titulo}>{route.params.nome}</Text>
+                    <Image style={styles.imagem} source={route.params.image} />
+                    <Text style={styles.alinhamento}>{route.params.descricao}</Text>
+                    <View style={styles.botao}>
+                        <Button style={styles.botao3}
+                            title='Voltar'
+                            color="#3a6604"
+                            onPress={function () {
+                                navigation.goBack()
+                            }}
+                        />
+                    </View>
+                    <View style={styles.botao3}>
+                        <Button
+                            title='Voltar para o inicio'
+                            color="#3a6604"
+                            onPress={function () { navigation.navigate('IFC') }}
+                        />
+                    </View>
+                </ScrollView>
+            </SafeAreaView>
         </View>
     )
 }
@@ -172,6 +171,11 @@ const styles = StyleSheet.create({
         justifyContent: 'top',
         width: '100%'
     },
+    container2: {
+        flex: 1,
+        paddingTop: StatusBar.currentHeight,
+        width: '100%'
+    },
     titulo: {
         margin: '8%',
         fontSize: 20,
@@ -183,6 +187,9 @@ const styles = StyleSheet.create({
     botao2: {
         margin: "1.5%"
     },
+    botao3: {
+        margin: "3%"
+    },
     img: {
         width: "98%",
         height: 300,
@@ -190,13 +197,16 @@ const styles = StyleSheet.create({
     },
     alinhamento: {
         flex: 1,
-        width: '80%',
+        width: '95%',
         fontSize: 16,
         textAlign: 'justify'
-
     },
-    Image:{
-        width:'98%',
+    imagem: {
+        width: '98%',
         height: 250
+    },
+    scrollView: {
+        marginHorizontal: 10,
+
     }
 });
