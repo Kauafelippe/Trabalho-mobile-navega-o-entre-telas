@@ -55,28 +55,38 @@ function TelaEscolherCurso({ route, navigation }) {
                     color="black"
                     onPress={function () {
                         navigation.navigate('TelaCursos', {
-                            nome: "Informatica",
+                            nome: "Informática",
                             image: require('./assets/images/logo_info.jpg'),
                             descricao: "O técnico em Informática Integrado ao Ensino Médio prepara o aluno para atuar de maneira consciente e responsável, com foco em desenvolvimento de programas de computador, seguindo as especificações e paradigmas da lógica e das linguagens de programação.",
-                            // tabelaCabecalho: ['Professor', 'Matéria'],
-                            // tabelaDado: [
-                            //     ['1', '2', '3', '4'],
-                            //     ['a', 'b', 'c', 'd'],
-                            //     ['1', '2', '3', '456\n789'],
-                            //     ['a', 'b', 'c', 'd']
-                            // ]
+                            tabelaCabecalho: ['Professor', 'Email', 'Matéria'],
+                            tabelaDado: [
+                                ['Bruno Anselmo Guilhen', 'bruno.guilhen@ifc.edu.br', 'Informática'],
+                                ['Eduardo Stahnke', 'eduardo.stahnke@ifc.edu.br', 'Informática'],
+                                ['Juliane Martinez Galiano', 'juliane.galiano@ifc.edu.br', 'Informática'],
+                                ['Rodrigo Ramos Nogueira', 'rodrigo.nogueira@ifc.edu.br', 'Informática'],
+                                ['Tiago Funk', 'tiago.funk@ifc.edu.br', 'Informática']
+                            ]
                         })
                     }} />
             </View>
             <View style={styles.botao2}>
                 <Button
-                    title='Vestuario'
+                    title='Vestuário'
                     color="black"
                     onPress={function () {
                         navigation.navigate('TelaCursos', {
-                            nome: "Vestuario",
+                            nome: "Vestuário",
                             image: require('./assets/images/logo_vest.jpg'),
-                            descricao: "O curso Técnico em Vestuário Integrado ao Ensino Médio objetiva proporcionar aos discentes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando o domínio dos conhecimentos científicos e tecnológicos, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho, com foco na formação e a qualificação de profissionais com visão técnica para atuarem na área de confecção do vestuário, aptos a gerenciar e operacionalizar as diversas etapas do processo de produção do vestuário, em empresas da área industrial e de prestação de serviços."
+                            descricao: "O curso Técnico em Vestuário Integrado ao Ensino Médio objetiva proporcionar aos discentes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando o domínio dos conhecimentos científicos e tecnológicos, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho, com foco na formação e a qualificação de profissionais com visão técnica para atuarem na área de confecção do vestuário, aptos a gerenciar e operacionalizar as diversas etapas do processo de produção do vestuário, em empresas da área industrial e de prestação de serviços.",
+                            tabelaCabecalho: ['Professor', 'Email', 'Matéria'],
+                            tabelaDado: [
+                                ['Ana Silvia de Lima Vielmo', 'ana.vielmo@ifc.edu.br', 'Vestuário/Moda'],
+                                ['Francisleth Pereira Battisti', 'francisleth.battisti@ifc.edu.br', 'Vestuário/Moda'],
+                                ['Isabela Dal-Bó Falchetti', 'isabela.dalbo@ifc.edu.br', 'Vestuário/Moda'],
+                                ['Lariane Davila Borges de Oliveira', 'lariane.oliveira@ifc.edu.br', 'Vestuário/Moda'],
+                                ['Márcio Monticelli Albani', 'marcio.albani@ifc.edu.br', 'Vestuário/Moda']
+                                ['Jonathan Gurgel de Lima', 'jonathan.lima@ifc.edu.br', 'Vestuário/Moda']
+                            ]
                         })
                     }} />
             </View>
@@ -89,8 +99,13 @@ function TelaEscolherCurso({ route, navigation }) {
                             nome: "Administração",
                             image: require('./assets/images/logo_adm.jpg'),
                             descricao: "O Curso Técnico em Administração tem por objetivo proporcionar aos estudantes o desenvolvimento de sua autonomia enquanto cidadãos críticos e participativos, visando ao domínio dos conhecimentos científicos e tecnológicos da administração, para atuarem de maneira consciente e responsável diante das necessidades atuais no mundo do trabalho. Assim, o profissional Técnico em Administração pode atuar nas instituições públicas, privadas e do terceiro setor que demandem atividades de gestão, trabalhando especialmente no suporte e apoio nos mais diversos setores.",
-
-                            //matéria, professor e imagem
+                            tabelaCabecalho: ['Professor', 'Email', 'Matéria'],
+                            tabelaDado: [
+                                ['André Luiz Kopelke', 'andre.kopelke@ifc.edu.br', 'Administração'],
+                                ['Jeter Lang', 'jeter.lang@ifc.edu.br', 'Administração'],
+                                ['Paulo Roberto Silveira Machado', 'paulo.machado@ifc.edu.br', 'Administração'],
+                                ['Thiago Souza Araújo', 'thiago.araujo@ifc.edu.br', 'Administração']
+                            ]
                         })
                     }} />
             </View>
@@ -112,10 +127,12 @@ function TelaCursos({ route, navigation }) {
                     <Text style={styles.titulo}>{route.params.nome}</Text>
                     <Image style={styles.imagem} source={route.params.image} />
                     <Text style={styles.alinhamento}>{route.params.descricao}</Text>
-                    {/* <Table style={styles.tabela}>
-                        <Row data={styles.tabelaCabecalho} style={styles.head} textStyle={styles.text} />
-                        <Rows data={styles.tabelaDado} textStyle={styles.text} />
-                    </Table> */}
+
+                    <Table style={styles.tabela}>
+                        <Row data={route.params.tabelaCabecalho} style={styles.head} textStyle={styles.text} />
+                        <Rows data={route.params.tabelaDado} textStyle={styles.text} />
+                    </Table>
+
                     <View style={styles.botao}>
                         <Button style={styles.botao3}
                             title='Voltar'
@@ -126,7 +143,7 @@ function TelaCursos({ route, navigation }) {
                     </View>
                     <View style={styles.botao3}>
                         <Button
-                            title='Voltar para o inicio'
+                            title='Voltar para o início'
                             color="#3a6604"
                             onPress={function () { navigation.navigate('IFC') }} />
                     </View>
@@ -207,12 +224,18 @@ const styles = StyleSheet.create({
     scrollView: {
         marginHorizontal: 10,
 
-    }// ,
-    // head: {
-    //     height: 40,
-    //     backgroundColor: '#f1f8ff'
-    // },
-    // text: {
-    //     margin: 6
-    // }
+    },
+    tabela: {
+        marginTop: 15,
+        width: "98%"
+    },
+    head: {
+        height: 40,
+        backgroundColor: '#E8FBE6'
+    },
+    text: {
+        margin: 6,
+        textAlign: 'center',
+        fontSize: 14
+    }
 });
